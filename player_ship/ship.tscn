@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://csactdoegtrlj"]
+
+[ext_resource type="Texture2D" uid="uid://bslwnjt77usv1" path="res://assets/ship.png" id="1_b2fxu"]
+[ext_resource type="Script" path="res://components/move_component.gd" id="2_2am7w"]
+[ext_resource type="Script" path="res://components/move_input_component.gd" id="3_kuqsd"]
+[ext_resource type="Resource" uid="uid://b35d1mstoikbb" path="res://player_ship/ship_move_stats.tres" id="4_j8jhp"]
+[ext_resource type="Script" path="res://components/position_clamp_component.gd" id="5_yfeb8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cse5"]
+atlas = ExtResource("1_b2fxu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etlbh"]
+atlas = ExtResource("1_b2fxu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxjlk"]
+atlas = ExtResource("1_b2fxu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_um28i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cse5")
+}],
+"loop": true,
+"name": &"center",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etlbh")
+}],
+"loop": true,
+"name": &"turn_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxjlk")
+}],
+"loop": true,
+"name": &"turn_right",
+"speed": 5.0
+}]
+
+[node name="Ship" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 0)
+sprite_frames = SubResource("SpriteFrames_um28i")
+animation = &"center"
+autoplay = "center"
+
+[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("2_2am7w")
+actor = NodePath("..")
+velocity = Vector2(10, 0)
+
+[node name="MoveInputComponent" type="Node" parent="." node_paths=PackedStringArray("move_component")]
+script = ExtResource("3_kuqsd")
+move_component = NodePath("../MoveComponent")
+move_stats = ExtResource("4_j8jhp")
+
+[node name="PositionClampComponent" type="Node2D" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("5_yfeb8")
+actor = NodePath("..")
