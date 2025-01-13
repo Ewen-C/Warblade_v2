@@ -5,11 +5,16 @@ extends Node2D
 @onready var spawner_component: SpawnerComponent = $SpawnerComponent as SpawnerComponent
 @onready var cannon_timer: Timer = $CannonTimer
 @onready var scale_component: ScaleComponent = $ScaleComponent as ScaleComponent
+@onready var ship_animated_sprite: AnimatedSprite2D = $Anchor/ShipAnimatedSprite
+@onready var move_component: MoveComponent = $MoveComponent
 
 var can_shoot = true
 var input_shoot = false
 
-func _input(event):
+func _process(_delta: float) -> void:
+	animate_ship()
+
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"): 
 		input_shoot = true
 		shoot_lasers()
@@ -28,3 +33,8 @@ func shoot_lasers() -> void:
 func _on_cannon_timer_timeout() -> void:
 	can_shoot = true
 	if input_shoot: shoot_lasers()
+
+func animate_ship() -> void:
+	if move_component.velocity.x < 0: ship_animated_sprite.play("turn_left")
+	elif move_component.velocity.x > 0: ship_animated_sprite.play("turn_right")
+	else: ship_animated_sprite.play("center")

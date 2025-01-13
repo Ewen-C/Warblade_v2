@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://csactdoegtrlj"]
+[gd_scene load_steps=18 format=3 uid="uid://csactdoegtrlj"]
 
 [ext_resource type="Script" path="res://scenes/player_ship/ship.gd" id="1_282g2"]
 [ext_resource type="Texture2D" uid="uid://bslwnjt77usv1" path="res://assets/ship.png" id="1_b2fxu"]
@@ -9,6 +9,29 @@
 [ext_resource type="Script" path="res://components/spawner_component.gd" id="7_rjwr5"]
 [ext_resource type="PackedScene" uid="uid://0x2114wmv0eu" path="res://scenes/projectiles/laser.tscn" id="8_71udc"]
 [ext_resource type="Script" path="res://components/scale_component.gd" id="9_my3bu"]
+[ext_resource type="Texture2D" uid="uid://s8sa8l5yblb6" path="res://assets/ship_flame.png" id="10_dtcno"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwgmt"]
+atlas = ExtResource("10_dtcno")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uq2g"]
+atlas = ExtResource("10_dtcno")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fux71"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwgmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uq2g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6cse5"]
 atlas = ExtResource("1_b2fxu")
@@ -52,7 +75,15 @@ animations = [{
 [node name="Ship" type="Node2D"]
 script = ExtResource("1_282g2")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Anchor" type="Node2D" parent="."]
+
+[node name="FlameAnimatedSprite" type="AnimatedSprite2D" parent="Anchor"]
+position = Vector2(0, 16)
+sprite_frames = SubResource("SpriteFrames_fux71")
+autoplay = "default"
+frame_progress = 0.640613
+
+[node name="ShipAnimatedSprite" type="AnimatedSprite2D" parent="Anchor"]
 sprite_frames = SubResource("SpriteFrames_um28i")
 animation = &"center"
 autoplay = "center"
@@ -86,7 +117,7 @@ one_shot = true
 
 [node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("9_my3bu")
-sprite = NodePath("../AnimatedSprite2D")
+sprite = NodePath("../Anchor")
 scale_amount = Vector2(1.2, 1.2)
 scale_duration = 0.25
 
