@@ -1,10 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://csactdoegtrlj"]
+[gd_scene load_steps=14 format=3 uid="uid://csactdoegtrlj"]
 
+[ext_resource type="Script" path="res://scenes/player_ship/ship.gd" id="1_282g2"]
 [ext_resource type="Texture2D" uid="uid://bslwnjt77usv1" path="res://assets/ship.png" id="1_b2fxu"]
 [ext_resource type="Script" path="res://components/move_component.gd" id="2_2am7w"]
 [ext_resource type="Script" path="res://components/move_input_component.gd" id="3_kuqsd"]
-[ext_resource type="Resource" uid="uid://b35d1mstoikbb" path="res://player_ship/ship_move_stats.tres" id="4_j8jhp"]
+[ext_resource type="Resource" uid="uid://b35d1mstoikbb" path="res://scenes/player_ship/ship_move_stats.tres" id="4_j8jhp"]
 [ext_resource type="Script" path="res://components/position_clamp_component.gd" id="5_yfeb8"]
+[ext_resource type="Script" path="res://components/spawner_component.gd" id="7_rjwr5"]
+[ext_resource type="PackedScene" uid="uid://0x2114wmv0eu" path="res://scenes/projectiles/laser.tscn" id="8_71udc"]
+[ext_resource type="Script" path="res://components/scale_component.gd" id="9_my3bu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6cse5"]
 atlas = ExtResource("1_b2fxu")
@@ -46,9 +50,9 @@ animations = [{
 }]
 
 [node name="Ship" type="Node2D"]
+script = ExtResource("1_282g2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_um28i")
 animation = &"center"
 autoplay = "center"
@@ -56,7 +60,6 @@ autoplay = "center"
 [node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("2_2am7w")
 actor = NodePath("..")
-velocity = Vector2(10, 0)
 
 [node name="MoveInputComponent" type="Node" parent="." node_paths=PackedStringArray("move_component")]
 script = ExtResource("3_kuqsd")
@@ -66,3 +69,23 @@ move_stats = ExtResource("4_j8jhp")
 [node name="PositionClampComponent" type="Node2D" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("5_yfeb8")
 actor = NodePath("..")
+
+[node name="SpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("7_rjwr5")
+scene = ExtResource("8_71udc")
+
+[node name="LeftCannon" type="Marker2D" parent="."]
+position = Vector2(-5, -4)
+
+[node name="RightCannon" type="Marker2D" parent="."]
+position = Vector2(5, -4)
+
+[node name="CannonTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("9_my3bu")
+sprite = NodePath("../AnimatedSprite2D")
+scale_amount = Vector2(1.2, 1.2)
+scale_duration = 0.25
