@@ -81,11 +81,13 @@ position = Vector2(-5, -4)
 position = Vector2(5, -4)
 
 [node name="CannonTimer" type="Timer" parent="."]
-wait_time = 0.25
-autostart = true
+wait_time = 0.3
+one_shot = true
 
 [node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("9_my3bu")
 sprite = NodePath("../AnimatedSprite2D")
 scale_amount = Vector2(1.2, 1.2)
 scale_duration = 0.25
+
+[connection signal="timeout" from="CannonTimer" to="." method="_on_cannon_timer_timeout"]
