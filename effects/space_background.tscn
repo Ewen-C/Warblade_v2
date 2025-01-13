@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg21s1r5nhhq3"]
+
+[ext_resource type="Texture2D" uid="uid://hjc6j0nrt38f" path="res://assets/backgrounds/Purple_Nebula_03-1024x1024.png" id="1_ap6ro"]
+[ext_resource type="Script" path="res://effects/space_background.gd" id="1_w0vni"]
+[ext_resource type="Texture2D" uid="uid://mnaqt6g33q2r" path="res://assets/backgrounds/far_stars.png" id="2_i8a3t"]
+[ext_resource type="Texture2D" uid="uid://bx0kfj3d6lsb2" path="res://assets/backgrounds/close_stars.png" id="3_c7ejj"]
+
+[node name="SpaceBackground" type="ParallaxBackground"]
+script = ExtResource("1_w0vni")
+
+[node name="SpaceLayer" type="ParallaxLayer" parent="."]
+unique_name_in_owner = true
+motion_mirroring = Vector2(0, 240)
+
+[node name="SpaceText" type="TextureRect" parent="SpaceLayer"]
+offset_right = 1600.0
+offset_bottom = 2400.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_ap6ro")
+stretch_mode = 6
+
+[node name="StarsFarLayer" type="ParallaxLayer" parent="."]
+unique_name_in_owner = true
+motion_mirroring = Vector2(0, 240)
+
+[node name="FarStarstext" type="TextureRect" parent="StarsFarLayer"]
+offset_right = 160.0
+offset_bottom = 240.0
+texture = ExtResource("2_i8a3t")
+stretch_mode = 1
+
+[node name="StarsCloseLayer" type="ParallaxLayer" parent="."]
+unique_name_in_owner = true
+motion_mirroring = Vector2(0, 240)
+
+[node name="CloseStarstext" type="TextureRect" parent="StarsCloseLayer"]
+offset_right = 160.0
+offset_bottom = 240.0
+texture = ExtResource("3_c7ejj")
+stretch_mode = 1

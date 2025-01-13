@@ -81,7 +81,7 @@ script = ExtResource("1_282g2")
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_fux71")
 autoplay = "default"
-frame_progress = 0.640613
+frame_progress = 0.257807
 
 [node name="ShipAnimatedSprite" type="AnimatedSprite2D" parent="Anchor"]
 sprite_frames = SubResource("SpriteFrames_um28i")
