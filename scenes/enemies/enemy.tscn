@@ -1,0 +1,58 @@
+[gd_scene load_steps=12 format=3 uid="uid://dtjk38faqixfb"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_aqf3v"]
+[ext_resource type="Script" path="res://components/move_component.gd" id="2_3p3y0"]
+[ext_resource type="Script" path="res://components/stats_component.gd" id="3_getqn"]
+[ext_resource type="Script" path="res://components/scale_component.gd" id="4_0jvum"]
+[ext_resource type="Script" path="res://components/flash_component.gd" id="5_hihcf"]
+[ext_resource type="Script" path="res://components/shake_component.gd" id="6_p7tae"]
+[ext_resource type="Script" path="res://components/hitbox_component.gd" id="7_0k7kl"]
+[ext_resource type="Script" path="res://components/hurtbox_component.gd" id="8_f3e5b"]
+[ext_resource type="Script" path="res://components/hurt_component.gd" id="9_toh23"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7xkb8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbtpk"]
+radius = 8.0
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_aqf3v")
+
+[node name="StatsComponent" type="Node" parent="."]
+script = ExtResource("3_getqn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="MoveComponent" type="Node" parent="."]
+script = ExtResource("2_3p3y0")
+
+[node name="ScaleComponent" type="Node" parent="."]
+script = ExtResource("4_0jvum")
+
+[node name="FlashComponent" type="Node" parent="."]
+script = ExtResource("5_hihcf")
+
+[node name="ShakeComponent" type="Node" parent="."]
+script = ExtResource("6_p7tae")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("7_0k7kl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_7xkb8")
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("8_f3e5b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CircleShape2D_hbtpk")
+
+[node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
+script = ExtResource("9_toh23")
+stats_component = NodePath("../StatsComponent")
+hurtbox_component = NodePath("../HurtboxComponent")

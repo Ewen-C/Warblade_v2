@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://dy45r6pjtvaf4"]
+
+[ext_resource type="PackedScene" uid="uid://dtjk38faqixfb" path="res://scenes/enemies/enemy.tscn" id="1_23ypq"]
+[ext_resource type="Texture2D" uid="uid://bbb2osd5phapu" path="res://assets/green_enemy.png" id="2_7iu0h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjyup"]
+atlas = ExtResource("2_7iu0h")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbsoq"]
+atlas = ExtResource("2_7iu0h")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6tlm"]
+atlas = ExtResource("2_7iu0h")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pcb31"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjyup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbsoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6tlm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Enemy" instance=ExtResource("1_23ypq")]
+
+[node name="StatsComponent" parent="." index="0"]
+health = 3
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_pcb31")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.640667
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+scale = Vector2(0.8, 0.8)
+
+[node name="MoveComponent" parent="." index="3" node_paths=PackedStringArray("actor")]
+actor = NodePath("..")
+
+[node name="ScaleComponent" parent="." index="4" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../AnimatedSprite2D")
+
+[node name="FlashComponent" parent="." index="5" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../AnimatedSprite2D")
+
+[node name="ShakeComponent" parent="." index="6" node_paths=PackedStringArray("node")]
+node = NodePath("../AnimatedSprite2D")
