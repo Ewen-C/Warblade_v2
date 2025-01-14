@@ -90,7 +90,7 @@ health = 3
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_fux71")
 autoplay = "default"
-frame_progress = 0.783624
+frame_progress = 0.348009
 
 [node name="ShipAnimatedSprite" type="AnimatedSprite2D" parent="Anchor"]
 sprite_frames = SubResource("SpriteFrames_um28i")
@@ -116,9 +116,11 @@ scene = ExtResource("8_71udc")
 
 [node name="LeftCannon" type="Marker2D" parent="."]
 position = Vector2(-5, -4)
+rotation = -0.261799
 
 [node name="RightCannon" type="Marker2D" parent="."]
 position = Vector2(5, -4)
+rotation = 0.261799
 
 [node name="CannonTimer" type="Timer" parent="."]
 wait_time = 0.3
