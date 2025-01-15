@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxhwsyfmeuq17"]
+
+[ext_resource type="PackedScene" uid="uid://d3mlrafrfunyf" path="res://scenes/levels/level.tscn" id="1_mmjnw"]
+
+[sub_resource type="Curve2D" id="Curve2D_ecyj8"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -16, 32, 0, 0, 0, 0, 24, 64, 0, 0, 0, 0, 64, 64, 0, 0, 0, 0, 40, 40)
+}
+point_count = 4
+
+[node name="Level" instance=ExtResource("1_mmjnw")]
+
+[node name="Path2D1" parent="." index="3"]
+curve = SubResource("Curve2D_ecyj8")
+
+[node name="Path2D2" parent="." index="4"]
+curve = SubResource("Curve2D_ecyj8")

@@ -90,7 +90,7 @@ health = 3
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_fux71")
 autoplay = "default"
-frame_progress = 0.348009
+frame_progress = 0.872179
 
 [node name="ShipAnimatedSprite" type="AnimatedSprite2D" parent="Anchor"]
 sprite_frames = SubResource("SpriteFrames_um28i")

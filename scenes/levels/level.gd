@@ -3,7 +3,8 @@ extends Node2D
 @onready var spawner_component: SpawnerComponent = $SpawnerComponent
 @onready var start_delay_timer: Timer = $StartDelayTimer
 @onready var enemy_spawn_timer: Timer = $EnemySpawnTimer
-@onready var path_2d: Path2D = $Path2D
+@onready var path_2d_1: Path2D = $Path2D_1
+@onready var path_2d_2: Path2D = $Path2D_2
 
 var enemies_to_spawn = 2
 
