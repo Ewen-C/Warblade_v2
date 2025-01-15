@@ -1,22 +1,9 @@
 extends Node2D
 
-@onready var spawner_component: SpawnerComponent = $SpawnerComponent
 @onready var start_delay_timer: Timer = $StartDelayTimer
-@onready var enemy_spawn_timer: Timer = $EnemySpawnTimer
-@onready var path_2d_1: Path2D = $Path2D_1
-@onready var path_2d_2: Path2D = $Path2D_2
 
-var enemies_to_spawn = 2
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+@export var waves_to_spawn: Array[Wave]
 
 func _on_start_delay_timer_timeout() -> void:
-	pass # Replace with function body.
+	for wave in waves_to_spawn:
+		wave.start_wave()

@@ -1,32 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3mlrafrfunyf"]
+[gd_scene load_steps=2 format=3 uid="uid://d3mlrafrfunyf"]
 
-[ext_resource type="Script" path="res://components/spawner_component.gd" id="1_nq4xh"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_s7uin"]
-
-[sub_resource type="Curve2D" id="Curve2D_123jm"]
-resource_local_to_scene = true
-
-[sub_resource type="Curve2D" id="Curve2D_booq3"]
-resource_local_to_scene = true
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_s7uin")
-
-[node name="SpawnerComponent" type="Node2D" parent="."]
-script = ExtResource("1_nq4xh")
 
 [node name="StartDelayTimer" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
 autostart = true
-
-[node name="EnemySpawnTimer" type="Timer" parent="."]
-wait_time = 0.25
-
-[node name="Path2D_1" type="Path2D" parent="."]
-curve = SubResource("Curve2D_123jm")
-
-[node name="Path2D_2" type="Path2D" parent="."]
-curve = SubResource("Curve2D_booq3")
 
 [connection signal="timeout" from="StartDelayTimer" to="." method="_on_start_delay_timer_timeout"]

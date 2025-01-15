@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2hyvcqde0vkr"]
+
+[ext_resource type="Script" path="res://scenes/levels/waves/wave.gd" id="1_t28gk"]
+[ext_resource type="Script" path="res://components/spawner_component.gd" id="2_bmpys"]
+
+[sub_resource type="Curve2D" id="Curve2D_qbu5o"]
+resource_local_to_scene = true
+
+[node name="LevelWave" type="Node2D"]
+script = ExtResource("1_t28gk")
+
+[node name="EnemySpawnIntervalTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="EnemyPath2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_qbu5o")
+
+[node name="EnemySpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("2_bmpys")
