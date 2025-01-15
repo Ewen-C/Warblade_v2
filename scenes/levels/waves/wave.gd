@@ -15,11 +15,10 @@ func _on_enemy_spawn_interval_timer_timeout() -> void:
 	spawn_enemy()
 
 func spawn_enemy() -> void:
-	# Create Enemy on new PathFollow2D inside the wave path
-	var path_follow_2d = PathFollow2D.new()
-	enemy_path_2d.add_child(path_follow_2d)
-	var enemy = enemy_spawner_component.spawn(path_follow_2d.global_position, path_follow_2d)
-	
+	# Create Enemy on new PathFollowComponent inside the wave path
+	var path_follower = PathFollowComponent.new()
+	enemy_path_2d.add_child(path_follower)
+	var enemy = enemy_spawner_component.spawn(path_follower.global_position, path_follower)
 
 	enemies_to_spawn -= 1;
 	if(enemies_to_spawn == 0): enemy_spawn_interval_timer.stop()
