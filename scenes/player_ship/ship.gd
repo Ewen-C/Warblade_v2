@@ -30,11 +30,11 @@ func shoot_lasers() -> void:
 	
 	spawned_laser = laser_spawner_component.spawn(left_cannon.global_position)
 	spawned_laser.global_rotation = left_cannon.global_rotation
-	spawned_laser.move_component.velocity = Vector2.UP.rotated(left_cannon.global_rotation) * 150
+	spawned_laser.move_component.velocity = Vector2.UP.rotated(left_cannon.global_rotation) * 200
 
 	spawned_laser = laser_spawner_component.spawn(right_cannon.global_position)
 	spawned_laser.global_rotation = right_cannon.global_rotation
-	spawned_laser.move_component.velocity = Vector2.UP.rotated(right_cannon.global_rotation) * 150
+	spawned_laser.move_component.velocity = Vector2.UP.rotated(right_cannon.global_rotation) * 200
 
 func _on_cannon_timer_timeout() -> void:
 	can_shoot = true

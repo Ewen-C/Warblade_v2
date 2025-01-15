@@ -12,8 +12,8 @@ script = ExtResource("1_t28gk")
 [node name="EnemySpawnIntervalTimer" type="Timer" parent="."]
 wait_time = 0.25
 
-[node name="EnemyPath2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_qbu5o")
-
 [node name="EnemySpawnerComponent" type="Node2D" parent="."]
 script = ExtResource("2_bmpys")
+
+[node name="EnemyPath2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_qbu5o")

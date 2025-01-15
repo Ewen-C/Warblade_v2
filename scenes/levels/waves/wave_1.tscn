@@ -13,10 +13,10 @@ point_count = 3
 [node name="Wave" instance=ExtResource("1_li5ip")]
 enemies_to_spawn = 4
 
-[node name="EnemyPath2D" parent="." index="1"]
-curve = SubResource("Curve2D_vptav")
-
-[node name="EnemySpawnerComponent" parent="." index="2"]
+[node name="EnemySpawnerComponent" parent="." index="1"]
 scene = ExtResource("2_r7x8f")
+
+[node name="EnemyPath2D" parent="." index="2"]
+curve = SubResource("Curve2D_vptav")
 
 [connection signal="timeout" from="EnemySpawnIntervalTimer" to="." method="_on_enemy_spawn_interval_timer_timeout"]
