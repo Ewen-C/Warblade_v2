@@ -28,10 +28,7 @@ func spawn_enemy() -> void:
 	enemies_count += 1
 	enemy.stats_component.no_health.connect(decrement_enemies_count)
 
-# TODO : Remove wave when it spawned its enemies, without removing said enemies
-
 func decrement_enemies_count() -> void:
-	print_debug("Wave decrement_enemies_count")
 	enemies_count -= 1
 	
 	if enemies_to_spawn == 0 and enemies_count == 0 : 

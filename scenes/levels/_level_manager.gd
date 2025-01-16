@@ -27,5 +27,8 @@ func spawn_level() -> void:
 
 func spawn_next_level() -> void:
 	current_level_index += 1
-	if(current_level_index >= level_list.size()): print_debug("Out of levels !")
-	else: spawn_level()
+	if(current_level_index >= level_list.size()): 
+		print_debug("-- Out of levels ! Looping ! --")
+		current_level_index = 0
+		
+	level_delay_timer.start()

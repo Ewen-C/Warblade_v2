@@ -17,5 +17,8 @@ position = Vector2(80, 216)
 [node name="LevelManager" parent="." instance=ExtResource("3_u7v7h")]
 level_list = Array[PackedScene]([ExtResource("4_0gxca"), ExtResource("5_fyueg")])
 
-[node name="Item" parent="." instance=ExtResource("6_vpodt")]
-position = Vector2(72, 136)
+[node name="Item2" parent="." instance=ExtResource("6_vpodt")]
+position = Vector2(72, 64)
+
+[node name="Item3" parent="." instance=ExtResource("6_vpodt")]
+position = Vector2(40, 56)

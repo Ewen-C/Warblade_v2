@@ -11,7 +11,7 @@ _data = {
 point_count = 5
 
 [node name="Wave" instance=ExtResource("1_qhbqy")]
-enemies_to_spawn = 6
+enemies_to_spawn = 7
 
 [node name="EnemySpawnIntervalTimer" parent="." index="0"]
 wait_time = 0.4

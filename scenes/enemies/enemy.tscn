@@ -31,14 +31,17 @@ script = ExtResource("3_getqn")
 [node name="MoveComponent" type="Node" parent="."]
 script = ExtResource("2_3p3y0")
 
-[node name="ScaleComponent" type="Node" parent="."]
+[node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("4_0jvum")
+sprite = NodePath("../AnimatedSprite2D")
 
-[node name="FlashComponent" type="Node" parent="."]
+[node name="FlashComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("5_hihcf")
+sprite = NodePath("../AnimatedSprite2D")
 
-[node name="ShakeComponent" type="Node" parent="."]
+[node name="ShakeComponent" type="Node" parent="." node_paths=PackedStringArray("node")]
 script = ExtResource("6_p7tae")
+node = NodePath("../AnimatedSprite2D")
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 collision_layer = 0

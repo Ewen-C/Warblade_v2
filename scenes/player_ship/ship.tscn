@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://csactdoegtrlj"]
+[gd_scene load_steps=24 format=3 uid="uid://csactdoegtrlj"]
 
 [ext_resource type="Script" path="res://scenes/player_ship/ship.gd" id="1_282g2"]
 [ext_resource type="Texture2D" uid="uid://bslwnjt77usv1" path="res://assets/ship.png" id="1_b2fxu"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://components/hurtbox_component.gd" id="11_wthhr"]
 [ext_resource type="Script" path="res://components/hurt_component.gd" id="13_3rhnb"]
 [ext_resource type="PackedScene" uid="uid://d2nruq0y5ufjy" path="res://effects/explosion_effect.tscn" id="14_4p7ms"]
+[ext_resource type="Script" path="res://components/pickup_item_component.gd" id="14_6qudk"]
 [ext_resource type="Script" path="res://components/destroyed_component.gd" id="15_a61gw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gwgmt"]
@@ -135,12 +136,22 @@ collision_mask = 0
 script = ExtResource("11_wthhr")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtboxComponent"]
-polygon = PackedVector2Array(-5, 7, 5, 7, 5, 4, 8, 4, 8, 2, 6, 0, 3, -1, 3, -4, 1, -6, 1, -7, -1, -7, -1, -6, -3, -4, -3, -1, -6, 0, -8, 2, -8, 4, -5, 4)
+polygon = PackedVector2Array(-5, 7, 5, 7, 5, 4, 8, 4, 8, 2, 6, 0, 3, -1, 3, -4, 1, -6, -1, -6, -3, -4, -3, -1, -6, 0, -8, 2, -8, 4, -5, 4)
 
 [node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
 script = ExtResource("13_3rhnb")
 stats_component = NodePath("../StatsComponent")
 hurtbox_component = NodePath("../HurtboxComponent")
+
+[node name="PickupItemComponent" type="Area2D" parent="." node_paths=PackedStringArray("ship", "stats_component")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("14_6qudk")
+ship = NodePath("..")
+stats_component = NodePath("../StatsComponent")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PickupItemComponent"]
+polygon = PackedVector2Array(-5, 7, 5, 7, 5, 4, 8, 4, 8, 2, 6, 0, 3, -1, 3, -4, 1, -6, -1, -6, -3, -4, -3, -1, -6, 0, -8, 2, -8, 4, -5, 4)
 
 [node name="ExplosionSpawnerComponent" type="Node2D" parent="."]
 script = ExtResource("7_rjwr5")

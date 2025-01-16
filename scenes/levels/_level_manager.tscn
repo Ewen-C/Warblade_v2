@@ -9,6 +9,7 @@ script = ExtResource("1_mtt0c")
 level_list = Array[PackedScene]([ExtResource("2_wnor8")])
 
 [node name="LevelDelayTimer" type="Timer" parent="."]
+wait_time = 1.5
 one_shot = true
 
 [node name="LevelSpawnerComponent" type="Node2D" parent="."]

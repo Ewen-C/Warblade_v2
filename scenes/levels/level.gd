@@ -3,6 +3,8 @@ extends Node2D
 
 @export var waves_to_spawn: Array[Wave]
 
+# TODO : Get all waves in waves_to_spawn at start and remove @export
+
 var waves_cleared: int = 0
 
 func _ready() -> void:
@@ -18,4 +20,4 @@ func increment_waves_cleared():
 		level_cleared.emit()
 		queue_free()
 
-signal level_cleared() # Emit when there is no enemies left
+signal level_cleared() # Emit when there is no waves left
