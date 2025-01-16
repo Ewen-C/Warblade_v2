@@ -6,12 +6,15 @@
 [sub_resource type="Curve2D" id="Curve2D_vptav"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 16, -16, 0, 0, 0, 0, 16, 64, 0, 0, 0, 0, 64, 64)
+"points": PackedVector2Array(0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 16, 64, 0, 0, 0, 0, 40, 64, 0, 0, 0, 0, 40, 40, 0, 0, 0, 0, 16, 0)
 }
-point_count = 3
+point_count = 5
 
 [node name="Wave" instance=ExtResource("1_li5ip")]
 enemies_to_spawn = 4
+
+[node name="EnemySpawnIntervalTimer" parent="." index="0"]
+wait_time = 0.4
 
 [node name="EnemySpawnerComponent" parent="." index="1"]
 scene = ExtResource("2_r7x8f")

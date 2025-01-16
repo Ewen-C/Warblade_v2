@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr34kmc60ui8h"]
+
+[ext_resource type="Script" path="res://scenes/levels/_level_manager.gd" id="1_mtt0c"]
+[ext_resource type="PackedScene" uid="uid://qdugnfc5rwwm" path="res://scenes/levels/level_01.tscn" id="2_wnor8"]
+[ext_resource type="Script" path="res://components/spawner_component.gd" id="2_yr2j4"]
+
+[node name="LevelManager" type="Node2D"]
+script = ExtResource("1_mtt0c")
+level_list = Array[PackedScene]([ExtResource("2_wnor8")])
+
+[node name="LevelDelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="LevelSpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("2_yr2j4")
+
+[connection signal="timeout" from="LevelDelayTimer" to="." method="_on_level_delay_timer_timeout"]

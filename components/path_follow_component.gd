@@ -6,7 +6,7 @@ extends PathFollow2D
 var ismoving = true
 
 func _ready() -> void:
-	loop = false
+	loop = true
 	rotates = false
 	rotation = 0
 

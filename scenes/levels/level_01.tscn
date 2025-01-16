@@ -4,6 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://p565b6d0ql3f" path="res://scenes/levels/waves/wave_1.tscn" id="2_utgdh"]
 
 [node name="Level" node_paths=PackedStringArray("waves_to_spawn") instance=ExtResource("1_oew3v")]
-waves_to_spawn = [NodePath("Wave_1")]
+waves_to_spawn = [NodePath("Wave_1"), NodePath("Wave_2")]
 
 [node name="Wave_1" parent="." index="1" instance=ExtResource("2_utgdh")]
+
+[node name="Wave_2" parent="." index="2" instance=ExtResource("2_utgdh")]
+position = Vector2(160, 0)
+scale = Vector2(-1, 1)

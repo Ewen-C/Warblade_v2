@@ -82,7 +82,7 @@ script = ExtResource("1_282g2")
 
 [node name="StatsComponent" type="Node" parent="."]
 script = ExtResource("2_ipc1d")
-health = 3
+health = 5.0
 
 [node name="Anchor" type="Node2D" parent="."]
 
@@ -116,11 +116,9 @@ scene = ExtResource("8_71udc")
 
 [node name="LeftCannon" type="Marker2D" parent="."]
 position = Vector2(-5, -4)
-rotation = -0.261799
 
 [node name="RightCannon" type="Marker2D" parent="."]
 position = Vector2(5, -4)
-rotation = 0.261799
 
 [node name="CannonTimer" type="Timer" parent="."]
 wait_time = 0.3
