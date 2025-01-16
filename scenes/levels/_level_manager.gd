@@ -21,4 +21,11 @@ func _on_level_delay_timer_timeout() -> void:
 func spawn_level() -> void:
 	print_debug("Spawn_level")
 	level_spawner_component.scene = level_list[current_level_index]
-	level_spawner_component.spawn()
+	
+	var current_level = level_spawner_component.spawn()
+	current_level.level_cleared.connect(spawn_next_level)
+
+func spawn_next_level() -> void:
+	current_level_index += 1
+	if(current_level_index >= level_list.size()): print_debug("Out of levels !")
+	else: spawn_level()

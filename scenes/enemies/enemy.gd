@@ -22,6 +22,3 @@ func _ready() -> void:
 	hitbox_component.hit_hurtbox.connect(
 		destroyed_component.destroy.unbind(1)
 	)
-
-func _process(delta: float) -> void:
-	pass

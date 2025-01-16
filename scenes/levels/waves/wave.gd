@@ -6,8 +6,10 @@ extends Node2D
 @onready var enemy_spawner_component: SpawnerComponent = $EnemySpawnerComponent
 
 @export var enemies_to_spawn: int
+var enemies_count: int = 0
 
 func start_wave() -> void:
+	print_debug("Start wave")
 	spawn_enemy()
 	enemy_spawn_interval_timer.start()
 
@@ -23,4 +25,17 @@ func spawn_enemy() -> void:
 	enemies_to_spawn -= 1;
 	if(enemies_to_spawn == 0): enemy_spawn_interval_timer.stop()
 
+	enemies_count += 1
+	enemy.stats_component.no_health.connect(decrement_enemies_count)
+
 # TODO : Remove wave when it spawned its enemies, without removing said enemies
+
+func decrement_enemies_count() -> void:
+	print_debug("Wave decrement_enemies_count")
+	enemies_count -= 1
+	
+	if enemies_to_spawn == 0 and enemies_count == 0 : 
+		wave_cleared.emit()
+		queue_free()
+
+signal wave_cleared() # Emit when there is no enemies left

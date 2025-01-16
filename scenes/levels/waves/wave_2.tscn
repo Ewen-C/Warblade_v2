@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://buure8rbqgivq"]
+
+[ext_resource type="PackedScene" uid="uid://c2hyvcqde0vkr" path="res://scenes/levels/waves/wave.tscn" id="1_qhbqy"]
+[ext_resource type="PackedScene" uid="uid://dy45r6pjtvaf4" path="res://scenes/enemies/green_enemy.tscn" id="2_afqxe"]
+
+[sub_resource type="Curve2D" id="Curve2D_vptav"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 48, 0, -0.420448, -31.1132, 0.420448, 31.1132, 96, 32, 0, 0, 0, 0, 80, 64, 3.79086e-05, 38.4056, -3.79086e-05, -38.4056, 24, 32, 0, 0, 0, 0, 48, 0)
+}
+point_count = 5
+
+[node name="Wave" instance=ExtResource("1_qhbqy")]
+enemies_to_spawn = 6
+
+[node name="EnemySpawnIntervalTimer" parent="." index="0"]
+wait_time = 0.4
+
+[node name="EnemySpawnerComponent" parent="." index="1"]
+scene = ExtResource("2_afqxe")
+
+[node name="EnemyPath2D" parent="." index="2"]
+position = Vector2(16, 0)
+curve = SubResource("Curve2D_vptav")
+
+[connection signal="timeout" from="EnemySpawnIntervalTimer" to="." method="_on_enemy_spawn_interval_timer_timeout"]
