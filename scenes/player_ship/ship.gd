@@ -44,3 +44,11 @@ func animate_ship() -> void:
 	if move_component.velocity.x < 0: ship_animated_sprite.play("turn_left")
 	elif move_component.velocity.x > 0: ship_animated_sprite.play("turn_right")
 	else: ship_animated_sprite.play("center")
+	
+func apply_item(i_type: Item.item_type, i_amount: float):
+	print_debug(Item.item_type.keys()[i_type])
+	print_debug(i_amount)
+	
+	if(i_type == Item.item_type.CANNON_ANGLE) :
+		left_cannon.global_rotation_degrees -= i_amount
+		right_cannon.global_rotation_degrees += i_amount

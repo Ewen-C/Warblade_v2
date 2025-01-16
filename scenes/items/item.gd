@@ -3,7 +3,9 @@ extends Node2D
 
 @onready var move_component: MoveComponent = $MoveComponent
 
-# Enum type of item
+enum item_type { CANNON_ANGLE, FIRE_RATE, MOVE_SPEED }
+
+@export var type: item_type = item_type.CANNON_ANGLE
 @export var amount: float = 0
 
 # Called when the node enters the scene tree for the first time.

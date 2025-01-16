@@ -9,11 +9,10 @@ signal pickup_item()
 
 func _ready():
 	# Connect _on_item_contact to pickup entered function
-	print_debug("Pick item ready")
 	area_entered.connect(_on_item_contact)
 
 func _on_item_contact(item_pickup: Item_Area):
-	print_debug("_on_item_contact")
-	
 	if not item_pickup is Item_Area: return
-	item_pickup.queue_free()
+	
+	ship.apply_item(item_pickup.item.type, item_pickup.item.amount)
+	item_pickup.item.queue_free()
