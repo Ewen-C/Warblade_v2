@@ -1,4 +1,4 @@
-class_name PickupItemComponent
+class_name ItemPickupComponent
 extends Area2D
 
 @export var ship: Node2D

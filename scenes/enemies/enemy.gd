@@ -9,6 +9,7 @@ extends Node2D
 @onready var hitbox_component: HitboxComponent = $HitboxComponent as HitboxComponent
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent as HurtboxComponent
 @onready var destroyed_component: DestroyedComponent = $DestroyedComponent
+@onready var item_drop_component: ItemDropComponent = $ItemDropComponent
 
 func _ready() -> void:
 	# Enemy feedback to damage
@@ -17,8 +18,9 @@ func _ready() -> void:
 		flash_component.flash()
 		shake_component.tween_shake()
 	)
+	
 	# Kills enemy when health depleted
-	stats_component.no_health.connect(queue_free)
+	stats_component.no_health.connect(item_drop_component.drop_item)
 	hitbox_component.hit_hurtbox.connect(
 		destroyed_component.destroy.unbind(1)
 	)

@@ -50,5 +50,8 @@ func apply_item(i_type: Item.item_type, i_amount: float):
 	print_debug(i_amount)
 	
 	if(i_type == Item.item_type.CANNON_ANGLE) :
-		left_cannon.global_rotation_degrees -= i_amount
-		right_cannon.global_rotation_degrees += i_amount
+		var cannon_l = clampf(left_cannon.global_rotation_degrees - i_amount, -20, 20)
+		left_cannon.global_rotation_degrees = cannon_l
+		
+		var cannon_r = clampf(right_cannon.global_rotation_degrees + i_amount, -20, 20)
+		right_cannon.global_rotation_degrees = cannon_r

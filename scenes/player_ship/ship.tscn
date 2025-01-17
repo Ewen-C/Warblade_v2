@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://components/hurtbox_component.gd" id="11_wthhr"]
 [ext_resource type="Script" path="res://components/hurt_component.gd" id="13_3rhnb"]
 [ext_resource type="PackedScene" uid="uid://d2nruq0y5ufjy" path="res://effects/explosion_effect.tscn" id="14_4p7ms"]
-[ext_resource type="Script" path="res://components/pickup_item_component.gd" id="14_6qudk"]
+[ext_resource type="Script" path="res://components/item_pickup_component.gd" id="14_6qudk"]
 [ext_resource type="Script" path="res://components/destroyed_component.gd" id="15_a61gw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gwgmt"]
@@ -143,14 +143,14 @@ script = ExtResource("13_3rhnb")
 stats_component = NodePath("../StatsComponent")
 hurtbox_component = NodePath("../HurtboxComponent")
 
-[node name="PickupItemComponent" type="Area2D" parent="." node_paths=PackedStringArray("ship", "stats_component")]
+[node name="ItemPickupComponent" type="Area2D" parent="." node_paths=PackedStringArray("ship", "stats_component")]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("14_6qudk")
 ship = NodePath("..")
 stats_component = NodePath("../StatsComponent")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PickupItemComponent"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ItemPickupComponent"]
 polygon = PackedVector2Array(-5, 7, 5, 7, 5, 4, 8, 4, 8, 2, 6, 0, 3, -1, 3, -4, 1, -6, -1, -6, -3, -4, -3, -1, -6, 0, -8, 2, -8, 4, -5, 4)
 
 [node name="ExplosionSpawnerComponent" type="Node2D" parent="."]
