@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0ux2w1hoq4rl"]
+[gd_scene load_steps=6 format=3 uid="uid://b0ux2w1hoq4rl"]
 
 [ext_resource type="PackedScene" uid="uid://csactdoegtrlj" path="res://scenes/player_ship/ship.tscn" id="1_w1rn0"]
 [ext_resource type="PackedScene" uid="uid://bg21s1r5nhhq3" path="res://effects/space_background.tscn" id="2_cy8wu"]
 [ext_resource type="PackedScene" uid="uid://cr34kmc60ui8h" path="res://scenes/levels/_level_manager.tscn" id="3_u7v7h"]
 [ext_resource type="PackedScene" uid="uid://qdugnfc5rwwm" path="res://scenes/levels/level_1.tscn" id="4_0gxca"]
 [ext_resource type="PackedScene" uid="uid://ctvntgxnkcvt0" path="res://scenes/levels/level_2.tscn" id="5_fyueg"]
-[ext_resource type="PackedScene" uid="uid://dvjene4ltq2yd" path="res://scenes/items/item.tscn" id="6_vpodt"]
 
 [node name="World" type="Node2D"]
 
@@ -16,6 +15,3 @@ position = Vector2(80, 216)
 
 [node name="LevelManager" parent="." instance=ExtResource("3_u7v7h")]
 level_list = Array[PackedScene]([ExtResource("4_0gxca"), ExtResource("5_fyueg")])
-
-[node name="Item" parent="." instance=ExtResource("6_vpodt")]
-position = Vector2(72, 136)
