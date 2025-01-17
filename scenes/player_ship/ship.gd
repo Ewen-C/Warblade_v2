@@ -58,8 +58,8 @@ func apply_item(i_type: Item.item_type, i_amount: float):
 		right_cannon.global_rotation_degrees = cannon_r
 	
 	elif(i_type == Item.item_type.FIRE_RATE) :
-		var fire_r = max(i_amount, 0.05)
-		cannon_timer.wait_time -= fire_r
+		var fire_r = max(cannon_timer.wait_time - i_amount, 0.1)
+		cannon_timer.wait_time = fire_r
 	
 	elif(i_type == Item.item_type.MOVE_SPEED) :
 		move_input_component.move_stats.speed += i_amount
