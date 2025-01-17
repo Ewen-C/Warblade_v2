@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dtjk38faqixfb"]
+[gd_scene load_steps=21 format=3 uid="uid://dtjk38faqixfb"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_aqf3v"]
 [ext_resource type="Script" path="res://components/move_component.gd" id="2_3p3y0"]
@@ -14,6 +14,10 @@
 [ext_resource type="Script" path="res://components/destroyed_component.gd" id="12_7dx0h"]
 [ext_resource type="PackedScene" uid="uid://dvjene4ltq2yd" path="res://scenes/items/item.tscn" id="12_baxnd"]
 [ext_resource type="Script" path="res://components/item_drop_component.gd" id="13_tox2c"]
+[ext_resource type="PackedScene" uid="uid://dqjvuf8wqui2w" path="res://scenes/items/item_01_cannon_angle_add.tscn" id="14_681pf"]
+[ext_resource type="PackedScene" uid="uid://cjt346ukdkg1l" path="res://scenes/items/item_02_cannon_angle_sub.tscn" id="15_armpp"]
+[ext_resource type="PackedScene" uid="uid://7u072puikkwb" path="res://scenes/items/item_03_move_speed_add.tscn" id="16_mr1hv"]
+[ext_resource type="PackedScene" uid="uid://b5lwmrg8phenw" path="res://scenes/items/item_04_firerate_add.tscn" id="17_r08u6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7xkb8"]
 
@@ -78,6 +82,7 @@ destroy_effect_spawner_component = NodePath("../ExplosionSpawnerComponent")
 [node name="ItemDropComponent" type="Node2D" parent="." node_paths=PackedStringArray("item_spawner_component")]
 script = ExtResource("13_tox2c")
 item_spawner_component = NodePath("../ItemSpawnerComponent")
+spawnable_items = Array[PackedScene]([ExtResource("14_681pf"), ExtResource("15_armpp"), ExtResource("16_mr1hv"), ExtResource("17_r08u6")])
 
 [node name="ItemSpawnerComponent" type="Node2D" parent="."]
 script = ExtResource("10_obnjx")

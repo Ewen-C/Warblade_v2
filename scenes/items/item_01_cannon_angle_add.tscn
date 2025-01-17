@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqjvuf8wqui2w"]
+
+[ext_resource type="PackedScene" uid="uid://dvjene4ltq2yd" path="res://scenes/items/item.tscn" id="1_b440m"]
+[ext_resource type="Texture2D" uid="uid://dqbcdaub7hqiq" path="res://assets/items/item_1.png" id="2_mgc32"]
+
+[node name="Item" instance=ExtResource("1_b440m")]
+amount = 5.0
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_mgc32")

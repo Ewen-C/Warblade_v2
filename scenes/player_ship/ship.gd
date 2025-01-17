@@ -7,6 +7,7 @@ extends Node2D
 @onready var scale_component: ScaleComponent = $ScaleComponent as ScaleComponent
 @onready var ship_animated_sprite: AnimatedSprite2D = $Anchor/ShipAnimatedSprite
 @onready var move_component: MoveComponent = $MoveComponent
+@onready var move_input_component: MoveInputComponent = $MoveInputComponent
 
 var can_shoot = true
 var input_shoot = false
@@ -55,3 +56,10 @@ func apply_item(i_type: Item.item_type, i_amount: float):
 		
 		var cannon_r = clampf(right_cannon.global_rotation_degrees + i_amount, -20, 20)
 		right_cannon.global_rotation_degrees = cannon_r
+	
+	elif(i_type == Item.item_type.FIRE_RATE) :
+		var fire_r = max(i_amount, 0.05)
+		cannon_timer.wait_time -= fire_r
+	
+	elif(i_type == Item.item_type.MOVE_SPEED) :
+		move_input_component.move_stats.speed += i_amount
