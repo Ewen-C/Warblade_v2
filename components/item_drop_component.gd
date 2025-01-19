@@ -12,7 +12,6 @@ func drop_item() -> void:
 	
 	for spawnable_item in spawnable_items:
 		if(drop_percent <= 10):
-			print_debug("Drop !")
 			item_spawner_component.scene = spawnable_item
 			item_spawner_component.call_deferred("spawn")
 			return

@@ -6,6 +6,7 @@ extends Node2D
 @onready var enemy_spawner_component: SpawnerComponent = $EnemySpawnerComponent
 
 @export var enemies_to_spawn: int
+@export var enemies_speed: float = 0.2 # Completes path loop in 5 seconds by default
 var enemies_count: int = 0
 
 func start_wave() -> void:
@@ -19,6 +20,7 @@ func _on_enemy_spawn_interval_timer_timeout() -> void:
 func spawn_enemy() -> void:
 	# Create Enemy on new PathFollowComponent inside the wave path
 	var path_follower = PathFollowComponent.new()
+	path_follower.move_speed = enemies_speed
 	enemy_path_2d.add_child(path_follower)
 	var enemy = enemy_spawner_component.spawn(path_follower.global_position, path_follower)
 

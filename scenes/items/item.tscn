@@ -15,3 +15,6 @@ actor = NodePath("..")
 
 [node name="Item_Area" parent="." node_paths=PackedStringArray("item") instance=ExtResource("4_dhylx")]
 item = NodePath("..")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(0.8, 0.8)

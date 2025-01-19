@@ -47,14 +47,11 @@ func animate_ship() -> void:
 	else: ship_animated_sprite.play("center")
 	
 func apply_item(i_type: Item.item_type, i_amount: float):
-	print_debug(Item.item_type.keys()[i_type])
-	print_debug(i_amount)
-	
 	if(i_type == Item.item_type.CANNON_ANGLE) :
-		var cannon_l = clampf(left_cannon.global_rotation_degrees - i_amount, -20, 20)
+		var cannon_l = clampf(left_cannon.global_rotation_degrees - i_amount, -20, 15)
 		left_cannon.global_rotation_degrees = cannon_l
 		
-		var cannon_r = clampf(right_cannon.global_rotation_degrees + i_amount, -20, 20)
+		var cannon_r = clampf(right_cannon.global_rotation_degrees + i_amount, -20, 15)
 		right_cannon.global_rotation_degrees = cannon_r
 	
 	elif(i_type == Item.item_type.FIRE_RATE) :

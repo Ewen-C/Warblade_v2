@@ -13,7 +13,7 @@ extends Node2D
 
 func _ready() -> void:
 	# Enemy feedback to damage
-	hurtbox_component.hurt.connect(func(hitbox: HitboxComponent):
+	hurtbox_component.hurt.connect(func(_hitbox: HitboxComponent):
 		scale_component.tween_scale()
 		flash_component.flash()
 		shake_component.tween_shake()

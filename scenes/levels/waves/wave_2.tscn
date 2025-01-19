@@ -12,6 +12,7 @@ point_count = 5
 
 [node name="Wave" instance=ExtResource("1_qhbqy")]
 enemies_to_spawn = 7
+enemies_speed = 0.3
 
 [node name="EnemySpawnIntervalTimer" parent="." index="0"]
 wait_time = 0.4
