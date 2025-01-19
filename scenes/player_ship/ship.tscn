@@ -122,7 +122,7 @@ position = Vector2(-5, -4)
 position = Vector2(5, -4)
 
 [node name="CannonTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.375
 one_shot = true
 
 [node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]

@@ -3,8 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d3mlrafrfunyf" path="res://scenes/levels/level.tscn" id="1_c14y0"]
 [ext_resource type="PackedScene" uid="uid://p565b6d0ql3f" path="res://scenes/levels/waves/wave_1.tscn" id="2_jwthr"]
 
-[node name="Level" node_paths=PackedStringArray("waves_to_spawn") instance=ExtResource("1_c14y0")]
-waves_to_spawn = [NodePath("Wave_1"), NodePath("Wave_2")]
+[node name="Level" instance=ExtResource("1_c14y0")]
 
 [node name="Wave_1" parent="." index="1" instance=ExtResource("2_jwthr")]
 

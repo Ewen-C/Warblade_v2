@@ -22,7 +22,7 @@ func spawn_level() -> void:
 	print_debug("Spawn_level")
 	level_spawner_component.scene = level_list[current_level_index]
 	
-	var current_level = level_spawner_component.spawn()
+	var current_level = level_spawner_component.spawn(Vector2.ZERO, self)
 	current_level.level_cleared.connect(spawn_next_level)
 
 func spawn_next_level() -> void:
