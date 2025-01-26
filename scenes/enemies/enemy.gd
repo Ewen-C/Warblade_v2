@@ -10,6 +10,8 @@ extends Node2D
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent as HurtboxComponent
 @onready var destroyed_component: DestroyedComponent = $DestroyedComponent
 @onready var item_drop_component: ItemDropComponent = $ItemDropComponent
+@onready var bullet_timer: Timer = $BulletTimer
+@onready var bullet_spawner_component: SpawnerComponent = $BulletSpawnerComponent
 
 func _ready() -> void:
 	# Enemy feedback to damage
@@ -24,3 +26,13 @@ func _ready() -> void:
 	hitbox_component.hit_hurtbox.connect(
 		destroyed_component.destroy.unbind(1)
 	)
+	
+	# Fire bullet when timer triggers
+	bullet_timer.timeout.connect(on_bullet_timeout)
+	bullet_timer.wait_time = randf_range(5, 15)
+	bullet_timer.start()
+	
+func on_bullet_timeout():
+	print_debug(name + str(get_instance_id()) + " on_bullet_timeout")
+	#bullet_spawner_component.spawn()
+	bullet_timer.wait_time = randf_range(5, 15)

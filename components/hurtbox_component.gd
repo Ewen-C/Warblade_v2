@@ -17,4 +17,5 @@ var is_invincible = false :
 			child.set_deferred("disabled", is_invincible)
 
 # Create a signal for when this hurtbox is hit by a hitbox
+@warning_ignore("unused_signal") # Used in hitbox
 signal hurt(hitbox)

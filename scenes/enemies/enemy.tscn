@@ -87,3 +87,8 @@ spawnable_items = Array[PackedScene]([ExtResource("14_681pf"), ExtResource("15_a
 [node name="ItemSpawnerComponent" type="Node2D" parent="."]
 script = ExtResource("10_obnjx")
 scene = ExtResource("12_baxnd")
+
+[node name="BulletTimer" type="Timer" parent="."]
+
+[node name="BulletSpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("10_obnjx")
